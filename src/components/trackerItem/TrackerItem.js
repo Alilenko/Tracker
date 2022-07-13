@@ -28,6 +28,14 @@ const TrackerItem = ({ item }) => {
   let intervalId;
 
   useEffect(() => {
+    if (!active) {
+      let currentTime = workTime;
+      const t = moment(currentTime).utcOffset(0).format("HH:mm:ss");
+      setTimer(t);
+    }
+  }, []);
+
+  useEffect(() => {
     if (active) {
       intervalId = setInterval(myTimer, 100);
     }
