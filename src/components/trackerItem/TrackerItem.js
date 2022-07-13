@@ -21,18 +21,7 @@ const TrackerItem = ({ item }) => {
     if (stopTime !== 0) {
       currentTime = Date.now() - startTime + workTime;
     }
-
-    var dur = moment.duration(currentTime, "milliseconds");
-    var hours = Math.floor(dur.asHours());
-    var mins = Math.floor(dur.asMinutes()) - hours * 60;
-    var sec = Math.floor(dur.asSeconds()) - hours * 60 * 60 - mins * 60;
-
-    var result =
-      (hours > 9 ? hours : "0" + hours) +
-      ":" +
-      (mins > 9 ? mins : "0" + mins) +
-      ":" +
-      (sec > 9 ? sec : "0" + sec);
+    const result = timeTransform(currentTime);
     setTimer(result);
   }
 
@@ -41,8 +30,8 @@ const TrackerItem = ({ item }) => {
   useEffect(() => {
     if (!active) {
       let currentTime = workTime;
-      const t = moment(currentTime).utcOffset(0).format("HH:mm:ss");
-      setTimer(t);
+      const result = timeTransform(currentTime);
+      setTimer(result);
     }
   }, []);
 
@@ -74,6 +63,21 @@ const TrackerItem = ({ item }) => {
 
   const deleteItem = (id) => {
     dispatch(deleteTracker(id));
+  };
+
+  const timeTransform = (currentTime) => {
+    var dur = moment.duration(currentTime, "milliseconds");
+    var hours = Math.floor(dur.asHours());
+    var mins = Math.floor(dur.asMinutes()) - hours * 60;
+    var sec = Math.floor(dur.asSeconds()) - hours * 60 * 60 - mins * 60;
+
+    var result =
+      (hours > 9 ? hours : "0" + hours) +
+      ":" +
+      (mins > 9 ? mins : "0" + mins) +
+      ":" +
+      (sec > 9 ? sec : "0" + sec);
+    return result;
   };
 
   return (
