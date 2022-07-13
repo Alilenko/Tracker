@@ -1,8 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import tracker from "./TrackerSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    tracker,
   },
+  devTools: process.env.NODE_ENV !== "production",
 });

@@ -1,0 +1,40 @@
+.tracker__item{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.207);
+
+    .item__title{
+        font-weight: 700;
+    }
+    .item__info{
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        .item__icon{
+            padding: 2px;
+            border-radius: 50%;
+            display: flex;
+            align-self: center;
+            margin-left: 10px;
+            background-color: transparent;
+            
+        }
+        .black{
+            border: 2px solid #000000;
+            .material-symbols-outlined{
+                color: #000000;
+            }
+        }
+        .red{
+            border: 2px solid #f90303;
+            .material-symbols-outlined{
+                color: #f90303;
+                
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,35 @@
+.tracker{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    .trecker__field{
+        padding: 2px 2px 2px 10px;
+        border: 1px solid rgba(60, 60, 60, 0.7);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 20px 0;
+        .trecker__input{    
+            border: none;
+            background-color: inherit;
+            flex-grow: 1;
+            padding: 10px;
+            outline: none;
+        }
+        .trecker__icon{
+            background-color: green;
+            padding: 5px;
+            border-radius: 50%;
+            color: white;
+            border: none;
+            .material-symbols-outlined{
+                font-size: 28px;
+            }
+        }
+    }
+  
+}
