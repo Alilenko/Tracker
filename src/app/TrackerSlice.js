@@ -45,9 +45,6 @@ export const trackerSlice = createSlice({
       state.trackerArr[
         state.trackerArr.findIndex((item) => item.id === action.payload.id)
       ].active = true;
-      /*state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload)
-      ].stopTime = 0;*/
       state.trackerArr[
         state.trackerArr.findIndex((item) => item.id === action.payload.id)
       ].startTime = action.payload.startTime;

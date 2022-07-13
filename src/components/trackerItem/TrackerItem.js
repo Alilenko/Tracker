@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 import {
   deleteTracker,
@@ -21,8 +21,19 @@ const TrackerItem = ({ item }) => {
     if (stopTime !== 0) {
       currentTime = Date.now() - startTime + workTime;
     }
-    const t = moment(currentTime).utcOffset(0).format("HH:mm:ss");
-    setTimer(t);
+
+    var dur = moment.duration(currentTime, "milliseconds");
+    var hours = Math.floor(dur.asHours());
+    var mins = Math.floor(dur.asMinutes()) - hours * 60;
+    var sec = Math.floor(dur.asSeconds()) - hours * 60 * 60 - mins * 60;
+
+    var result =
+      (hours > 9 ? hours : "0" + hours) +
+      ":" +
+      (mins > 9 ? mins : "0" + mins) +
+      ":" +
+      (sec > 9 ? sec : "0" + sec);
+    setTimer(result);
   }
 
   let intervalId;
