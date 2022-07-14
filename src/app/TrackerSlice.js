@@ -21,33 +21,23 @@ export const trackerSlice = createSlice({
       );
     },
     stopCounting: (state, action) => {
-      state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload.id)
-      ].active = false;
-      state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload.id)
-      ].stopTime = action.payload.stopTime;
+      const id = state.trackerArr.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.trackerArr[id].active = false;
+      state.trackerArr[id].stopTime = action.payload.stopTime;
 
-      state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload.id)
-      ].workTime =
-        state.trackerArr[
-          state.trackerArr.findIndex((item) => item.id === action.payload.id)
-        ].stopTime -
-        state.trackerArr[
-          state.trackerArr.findIndex((item) => item.id === action.payload.id)
-        ].startTime +
-        state.trackerArr[
-          state.trackerArr.findIndex((item) => item.id === action.payload.id)
-        ].workTime;
+      state.trackerArr[id].workTime =
+        state.trackerArr[id].stopTime -
+        state.trackerArr[id].startTime +
+        state.trackerArr[id].workTime;
     },
     startCounting: (state, action) => {
-      state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload.id)
-      ].active = true;
-      state.trackerArr[
-        state.trackerArr.findIndex((item) => item.id === action.payload.id)
-      ].startTime = action.payload.startTime;
+      const id = state.trackerArr.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.trackerArr[id].active = true;
+      state.trackerArr[id].startTime = action.payload.startTime;
     },
   },
 });

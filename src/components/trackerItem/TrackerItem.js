@@ -13,8 +13,9 @@ const TrackerItem = ({ item }) => {
   const [timer, setTimer] = useState("00:00:00");
   const dispatch = useDispatch();
 
+  let currentTime;
+
   function myTimer() {
-    let currentTime;
     if (stopTime === 0) {
       currentTime = new Date() - time;
     }
@@ -29,7 +30,7 @@ const TrackerItem = ({ item }) => {
 
   useEffect(() => {
     if (!active) {
-      let currentTime = workTime;
+      currentTime = workTime;
       const result = timeTransform(currentTime);
       setTimer(result);
     }
